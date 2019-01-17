@@ -1,0 +1,15 @@
+vbell off
+escape ^Zz
+
+# huge scrollback buffer
+defscrollback 50000
+
+# status bar
+hardstatus on
+hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
