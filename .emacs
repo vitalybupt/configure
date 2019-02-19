@@ -467,3 +467,14 @@ putting the matching lines in a buffer named *matching*"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)   
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
+
+(add-hook 'org-mode-hook #'(lambda ()
+                             ;; make the lines in the buffer wrap around the edges of the screen.
+                             ;; to press C-c q  or fill-paragraph ever again!
+                             (visual-line-mode)
+                             (org-indent-mode)))
