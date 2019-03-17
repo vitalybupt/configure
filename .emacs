@@ -473,6 +473,22 @@ putting the matching lines in a buffer named *matching*"
 
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
 
+(defun my-put-file-name-on-clipboard ()
+  "Put the current file name on the clipboard"
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (with-temp-buffer
+        (insert filename)
+        (clipboard-kill-region (point-min) (point-max)))
+      (message filename))))
+
+(setq auto-mode-alist
+      (cons '("\\.gradle\\'" . groovy-mode)
+	    auto-mode-alist))
+
 (add-hook 'org-mode-hook #'(lambda ()
                              ;; make the lines in the buffer wrap around the edges of the screen.
                              ;; to press C-c q  or fill-paragraph ever again!
